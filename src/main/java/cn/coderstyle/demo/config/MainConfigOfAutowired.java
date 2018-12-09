@@ -26,6 +26,18 @@ import cn.coderstyle.demo.service.BookService;
  * 			可以与@Autowired一样实现，但默认按照属性名称装配，不支持@Primary功能，不支持@Autowired（require=false）
  * 		@Inject:
  * 			需要导入javax.inject的maven依赖，功能与@Autowired功能一样，但没有require=false功能
+ * @See AutowiredAnnotationBeanPostProcessor:解析完成@Autowired功能
+ * 
+ * 3）@Autowired可用于构造器、参数、方法、属性
+ * 
+ * 4) 自定义组件想要使用Spring容器底层的一些组件（ApplicationContextAwareProcessor，BeanFactory，xxx）;
+ * 		自定义组件实现xxxAware，在创建对象的时候，会调用介入使用的方法注入相关组件；
+ * 		Aware接口的子接口：把Spring底层的一些组件注入到自定义的Bean中;
+ * 		xxxAware:功能使用xxxProcessor;
+ * 			ApplicationContextAware==>ApplicationContextAwareProcessor
+ * 
+ * 
+ * 
  * @author champion
  *
  */
