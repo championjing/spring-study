@@ -14,6 +14,7 @@ public class MathCalculator {
 	 */
 	
 	public int div(int i,int j) {
+		System.out.println("运行div方法.....");
 		return i/j;
 	}
 }
