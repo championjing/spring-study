@@ -1,5 +1,9 @@
 package cn.coderstyle.demo.config;
 
+import org.springframework.aop.aspectj.autoproxy.AspectJAwareAdvisorAutoProxyCreator;
+import org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -30,6 +34,21 @@ import cn.coderstyle.demo.aop.MathCalculator;
  * 	1.将业务类和切面类加入到容器，并告诉spring容器哪个是切面类（@Aspect）
  * 	2.在切面类上的每一个通知方法上标注通知注解，告诉spring何时何地运行（切入点表达式）
  * 	3.开启给予注解的aop模式
+ * 
+ * AOP原理：查看给容器中注册了什么组件,这个组件什么时候工作，有什么功能
+ * 	1.@EnableAspectJAutoProxy：
+ * 		@Import({AspectJAutoProxyRegistrar.class})给容器中导入AspectJAutoProxyRegistrar
+ * 		利用AspectJAutoProxyRegistrar自定义给容器中注册bean:internalAutoProxyCreator=AnnotationAwareAspectJAutoProxyCreator,
+ * 		给容器中注册一个AnnotationAwareAspectJAutoProxyCreator（自动代理创建器）
+ * 	2.探索AnnotationAwareAspectJAutoProxyCreator的功能
+ * 		这个类的集成关系
+ * 		AnnotationAwareAspectJAutoProxyCreator
+ * 			->AspectJAwareAdvisorAutoProxyCreator
+ * 				->AbstractAdvisorAutoProxyCreator
+ * 					->AbstractAutoProxyCreator
+ * 						->SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
+ * 							关注SmartInstantiationAwareBeanPostProcessor中的后置处理器（bean初始化前后做的事情）、自动装配BeanFactory
+ * 
  * @author champion
  *
  */
