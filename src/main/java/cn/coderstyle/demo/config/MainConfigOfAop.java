@@ -48,7 +48,10 @@ import cn.coderstyle.demo.aop.MathCalculator;
  * 					->AbstractAutoProxyCreator
  * 						->SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
  * 							关注SmartInstantiationAwareBeanPostProcessor中的后置处理器（bean初始化前后做的事情）、自动装配BeanFactory
- * 
+ * 		AbstractAutoProxyCreator.setBeanFactory()
+ * 								.postProcessxxx() 后置处理器的实现
+ * 		AbstractAdvisorAutoProxyCreator	
+ * 					
  * @author champion
  *
  */
