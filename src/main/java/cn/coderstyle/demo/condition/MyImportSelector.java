@@ -11,7 +11,7 @@ public class MyImportSelector implements ImportSelector {
 	@Override
 	public String[] selectImports(AnnotationMetadata importingClassMetadata) {
 		// TODO Auto-generated method stub
-		return new String[] {"cn.coderstyle.demo.entity.Blue","cn.coderstyle.demo.entity.Yellow"};
+		return new String[] {"cn.coderstyle.demo.bean.Blue","cn.coderstyle.demo.bean.Yellow"};
 	}
 
 }
