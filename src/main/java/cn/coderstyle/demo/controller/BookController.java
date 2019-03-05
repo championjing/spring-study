@@ -1,15 +1,14 @@
 package cn.coderstyle.demo.controller;
 
+import cn.coderstyle.demo.annotation.JSONParam;
+import com.alibaba.fastjson.annotation.JSONField;
 import org.aspectj.weaver.tools.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import cn.coderstyle.demo.service.BookService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
@@ -18,9 +17,9 @@ public class BookController {
 	@Autowired(required=false) //默认required是true，是必须装配的
 	private BookService bookService2;
 
-	@RequestMapping(value = "/hello")
-	public String print() {
-		System.out.println("controller:"+bookService2);
+	@RequestMapping(value = "/hello",method = RequestMethod.POST)
+	public String print(@JSONParam String msg,@RequestBody String str) {
+		System.out.println("controller:"+msg);
 		return "hello";
 	}
 	/**

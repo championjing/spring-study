@@ -15,7 +15,7 @@ public class IOCTest_Autowired {
 		System.out.println("===============");
 		BookController bookController = (BookController) applicationContext.getBean("bookController");
 //		System.out.println(bookService);
-		bookController.print();
+//		bookController.print("");
 		applicationContext.close();
 	}
 	
