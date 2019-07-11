@@ -1,7 +1,9 @@
 package cn.coderstyle.demo;
 
+import cn.coderstyle.demo.async.AsyncDemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -14,6 +16,9 @@ import cn.coderstyle.demo.config.MainConfig;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringStudyApplicationTests {
+	
+	@Autowired
+	private AsyncDemo asyncDemo;
 
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
 //	@Test
@@ -53,5 +58,19 @@ public class SpringStudyApplicationTests {
 			System.out.println("name:"+name);
 		}
 		
+	}
+	@Test
+	public void testAsync(){
+		System.out.println("start1");
+		asyncDemo.add(1,"a");
+		System.out.println("start2----------");
+		asyncDemo.add(1000,"b");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("end");
+		}
 	}
 }
