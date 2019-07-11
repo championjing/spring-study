@@ -63,6 +63,13 @@ public class SpringStudyApplicationTests {
 	public void testAsync(){
 		System.out.println("start1");
 		asyncDemo.add(1,"a");
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("end");
+		}
 		System.out.println("start2----------");
 		asyncDemo.add(1000,"b");
 		try {
